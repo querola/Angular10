@@ -6,6 +6,19 @@
 <div> la suma de 2 y 2 es {{2+2}}</div>
 <div>El doble de 3 es : {{duplicarNumero(3)}}</div>
 <h2>Datos de la pelicula:</h2>
-<h3>{{pelicula.titulo | uppercase}}</h3>
-<div>{{pelicula.fechaLanzamiento | date:"dd-MMMM-yyyy" | uppercase}}</div>
-<div>{{pelicula.precio | currency}}</div>
+<div *ngIf="!peliculas">
+    <img src="https://i.pinimg.com/originals/78/e8/26/78e826ca1b9351214dfdd5e47f7e2024.gif" />
+</div>
+<div *ngIf="peliculas?.length === 0">
+    <p>No Hay peliculas para mostrar</p>
+</div>
+<div *ngIf="peliculas && peliculas.length > 0">
+    <div *ngFor="let pelicula of peliculas; let index = index" class="pelicula-contenedor">
+        <h3>
+            pelicula {{index}}:
+            {{pelicula.titulo | uppercase}}
+        </h3>
+        <div>{{pelicula.fechaLanzamiento | date:"dd-MMMM-yyyy" | uppercase}}</div>
+        <div>{{pelicula.precio | currency}}</div>
+    </div>
+</div>
