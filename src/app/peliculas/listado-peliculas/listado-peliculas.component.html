@@ -9,6 +9,7 @@
       <h3>
           pelicula {{index}}:
           {{pelicula.titulo | uppercase}}
+          <button style="margin-left: 1rem;" (click)="remover(index)">remover</button>
       </h3>
       <div>{{pelicula.fechaLanzamiento | date:"dd-MMMM-yyyy" | uppercase}}</div>
       <div>{{pelicula.precio | currency}}</div>
